@@ -29,13 +29,13 @@ class Navbar extends Component {
       <div id="navbar">
         <Segment inverted>
           <Menu inverted pointing secondary>
-            <Menu.Item
+            {/* <Menu.Item
               as={Link}
               to={'/home'}
               name="home"
               active={activeTab === 'home'}
               onClick={this.handleTabChange}
-            />
+            /> */}
             <Menu.Item
               as={Link}
               to={'/scene-builder'}

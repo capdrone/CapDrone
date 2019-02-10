@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Grid, Header, Icon, List, Segment } from 'semantic-ui-react';
 import VideoPlayer from '../components/VideoPlayer';
 import Slider from 'react-slick';
+
 const { ipcRenderer } = window.require('electron');
 
 class Videos extends Component {
@@ -14,7 +15,7 @@ class Videos extends Component {
 
     ipcRenderer.send('get-available-videos');
     ipcRenderer.on('has-available-videos', (evt, videos) => {
-      this.setState({ availableVideos: videos, selectedVideo: videos[0] });
+      this.setState({ availableVideos: videos, selectedVideo: videos[1] });
     });
   }
   handleVideoClick = (e, { name }) => {
@@ -53,19 +54,22 @@ class Videos extends Component {
                   </font>
                   <hr width="50%" />
                 </List.Header>
-                {availableVideos.map(video => {
-                  return (
-                    <List.Item
-                      // className="video-single"
-                      key={video}
-                      as="a"
-                      name={video}
-                      onClick={this.handleVideoClick}
-                    >
-                      {video.slice(0, -4)}
-                    </List.Item>
-                  );
-                })}
+                {availableVideos
+                  .slice(1)
+                  .reverse()
+                  .map(video => {
+                    return (
+                      <List.Item
+                        // className="video-single"
+                        key={video}
+                        as="a"
+                        name={video}
+                        onClick={this.handleVideoClick}
+                      >
+                        {video.slice(0, -4)}
+                      </List.Item>
+                    );
+                  })}
               </List>
             </Segment>
           </Grid.Row>

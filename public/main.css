@@ -130,8 +130,8 @@
   height: 100%;
   width: 350px;
   overflow: scroll;
-  padding-top: 20px;
-  padding-bottom: 25px;
+  padding-top: 25px;
+  padding-bottom: 0px;
   margin-top: 30px;
 }
 
